@@ -1,0 +1,295 @@
+<!-- <?xml version="1.0" encoding="utf-8" ?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="auboi5">
+    <!-- 加了底座 -->
+    <link name="world">      
+        <visual>
+         <origin xyz="0 0 0" rpy="0 0 0"/>
+         <geometry>
+             <box size="1 1 0.01" />
+         </geometry>
+         <material name="">
+            <color rgba="1 1 1 1" />
+         </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+               <box size="1 1 0.01" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="world_joint" type="fixed">
+        <origin xyz="0 0 0.02" rpy="0 0 0" />
+        <parent link="world" />
+        <child link="base_link" />
+        <origin xyz="0.0 0.0 0.05" rpy="0.0 0.0 0.0" />
+    </joint>
+
+    <link name="base_link">
+        <inertial>
+            <origin xyz="-4.763E-09 0.0027276 0.018597" rpy="0 0 0" />
+            <mass value="0.00007" />
+            <inertia ixx="0.0013972" ixy="1.8477E-09" ixz="-1.6619E-11" iyy="0.0012289" iyz="-2.0333E-05" izz="0.0023923" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://auboi5/meshes/base_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.25098 0.25098 0.25098 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://auboi5/meshes/base_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="jb_Link">
+        <inertial>
+            <origin xyz="3.2669E-07 -0.0035585 0.0016957" rpy="0 0 0" />
+            <mass value="0.000008" />
+            <inertia ixx="0.0054991" ixy="-7.787E-09" ixz="5.7837E-08" iyy="0.0053429" iyz="-1.2752E-05" izz="0.0035131" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://auboi5/meshes/jb_Link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.25098 0.25098 0.25098 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://auboi5/meshes/jb_Link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="jb_joint" type="revolute">
+        <origin xyz="0 0 0.1215" rpy="0 0 0" />
+        <parent link="base_link" />
+        <child link="jb_Link" />
+        <axis xyz="0 0 1" />
+        <limit lower="-3.14" upper="3.14" effort="150.0" velocity="2" />
+    </joint>
+    <link name="b1_Link">
+        <inertial>
+            <origin xyz="-3.249E-12 0.204 0.0011158" rpy="0 0 0" />
+            <mass value="0.000005" />
+            <inertia ixx="0.027366" ixy="-1.5574E-08" ixz="1.5153E-12" iyy="0.012885" iyz="-3.7767E-10" izz="0.023395" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://auboi5/meshes/b1_Link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.25098 0.25098 0.25098 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://auboi5/meshes/b1_Link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="b1_joint" type="revolute">
+        <origin xyz="0 -0.1405 0" rpy="1.5708 0 0" />
+        <parent link="jb_Link" />
+        <child link="b1_Link" />
+        <axis xyz="0 0 1" />
+        <limit lower="-3.14" upper="3.14" effort="150.0" velocity="2" />
+    </joint>
+    <link name="b2_Link">
+        <inertial>
+            <origin xyz="1.43909591351073E-06 -0.195128794993428 -0.00296729386877378" rpy="0 0 0" />
+            <mass value="0.000002" />
+            <inertia ixx="0.0093842222979008" ixy="-6.73245247743687E-08" ixz="5.50762167197453E-08" iyy="0.00229641281627071" iyz="0.000105876942876551" izz="0.00906908015661336" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://auboi5/meshes/b2_Link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.25098 0.25098 0.25098 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://auboi5/meshes/b2_Link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="b2_joint" type="revolute">
+        <origin xyz="0 0.408 -0.1215" rpy="3.1416 0 0" />
+        <parent link="b1_Link" />
+        <child link="b2_Link" />
+        <axis xyz="0 0 1" />
+        <limit lower="-3.14" upper="3.14" effort="150.0" velocity="2" />
+    </joint>
+    <link name="wrist1_Link">
+        <inertial>
+            <origin xyz="2.8599E-07 0.00019336 0.0025933" rpy="0 0 0" />
+            <mass value="0.000005" />
+            <inertia ixx="0.00090244" ixy="9.0885E-09" ixz="1.5325E-09" iyy="0.00047796" iyz="-4.81E-07" izz="0.00087249" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://auboi5/meshes/wrist1_Link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.25098 0.25098 0.25098 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://auboi5/meshes/wrist1_Link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="wrist1_joint" type="revolute">
+        <origin xyz="0 -0.376 -0.1025" rpy="0 0 0" />
+        <parent link="b2_Link" />
+        <child link="wrist1_Link" />
+        <axis xyz="0 0 1" />
+        <limit lower="-3.14" upper="3.14" effort="150.0" velocity="2" />
+    </joint>
+    <link name="wrist2_Link">
+        <inertial>
+            <origin xyz="-2.8586E-07 -0.00019336 0.0025933" rpy="0 0 0" />
+            <mass value="0.000005" />
+            <inertia ixx="0.00090244" ixy="9.0922E-09" ixz="-1.5325E-09" iyy="0.00047796" iyz="4.81E-07" izz="0.00087249" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://auboi5/meshes/wrist2_Link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.25098 0.25098 0.25098 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://auboi5/meshes/wrist2_Link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="wrist2_joint" type="revolute">
+        <origin xyz="0 -0.1025 0" rpy="-1.5708 0 0" />
+        <parent link="wrist1_Link" />
+        <child link="wrist2_Link" />
+        <axis xyz="0 0 1" />
+        <limit lower="-3.14" upper="3.14" effort="150.0" velocity="2" />
+    </joint>
+    <link name="wrist3_Link">
+        <inertial>
+            <origin xyz="-0.037285 -0.049954 0.0030164" rpy="0 0 0" />
+            <mass value="0.0004" />
+            <inertia ixx="0.00072657" ixy="-0.00052909" ixz="-3.9286E-05" iyy="0.0012741" iyz="-5.5164E-06" izz="0.0019415" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://auboi5/meshes/wrist3_Link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.25098 0.25098 0.25098 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://auboi5/meshes/wrist3_Link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="wrist3_joint" type="revolute">
+        <origin xyz="0 0.094 0.00047211" rpy="1.5708 0 0" />
+        <parent link="wrist2_Link" />
+        <child link="wrist3_Link" />
+        <axis xyz="0 0 1" />
+        <limit lower="-3.14" upper="3.14" effort="150.0" velocity="2" />
+    </joint>
+
+    <transmission name="trans_jb_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="jb_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="jb_joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_b1_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="b1_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="b1_joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_b2_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="b2_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="b2_joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>a
+    </transmission>
+    <transmission name="trans_wrist1_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="wrist1_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="wrist1_joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_wrist2_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="wrist2_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="wrist2_joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_wrist3_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="wrist3_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="wrist3_joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/</robotNamespace>
+        </plugin>
+    </gazebo>
+</robot>
+ -->
