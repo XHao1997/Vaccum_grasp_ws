@@ -1,0 +1,25 @@
+arm_controller:
+  type: position_controllers/JointTrajectoryController
+  joints: [jb_joint, b1_joint, b2_joint, wrist1_joint, wrist2_joint, wrist3_joint]
+  constraints:
+    goal_time: 1.0
+    stopped_velocity_tolerance: 0.02
+    jb_joint:     {trajectory: 0.03, goal: 0.01}
+    b1_joint:     {trajectory: 0.03, goal: 0.01}
+    b2_joint:     {trajectory: 0.03, goal: 0.01}
+    wrist1_joint: {trajectory: 0.02, goal: 0.01}
+    wrist2_joint: {trajectory: 0.02, goal: 0.01}
+    wrist3_joint: {trajectory: 0.02, goal: 0.01}
+  stop_trajectory_duration: 0.6
+  state_publish_rate: 100
+
+# gazebo_ros_control:
+#   pid_gains:
+#     # Big/base joints: more P and D
+#     jb_joint:     {p: 600.0, i: 0.0, d: 30.0, i_clamp_min: -5.0, i_clamp_max: 5.0}
+#     b1_joint:     {p: 550.0, i: 0.0, d: 28.0, i_clamp_min: -5.0, i_clamp_max: 5.0}
+#     b2_joint:     {p: 450.0, i: 0.0, d: 24.0, i_clamp_min: -4.0, i_clamp_max: 4.0}
+#     # Wrists: softer to avoid chatter during grasp/contact
+#     wrist1_joint: {p: 220.0, i: 0.0, d: 12.0, i_clamp_min: -3.0, i_clamp_max: 3.0}
+#     wrist2_joint: {p: 200.0, i: 0.0, d: 10.0, i_clamp_min: -3.0, i_clamp_max: 3.0}
+#     wrist3_joint: {p: 180.0, i: 0.0, d:  9.0, i_clamp_min: -2.0, i_clamp_max: 2.0}

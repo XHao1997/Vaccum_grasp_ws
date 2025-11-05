@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: auboi5
+    relative_path: urdf/auboi5.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/auboi5.srdf
+  CONFIG:
+    author_name: fjc
+    author_email: 2287994485@qq.com
+    generated_timestamp: 1761906328

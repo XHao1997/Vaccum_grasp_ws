@@ -1,0 +1,96 @@
+<?xml version='1.0'?>
+<sdf version='1.7'>
+  <model name='gj'>
+    <static>0</static>
+    <allow_auto_disable>1</allow_auto_disable>
+
+    <link name='link_0'>
+      <!-- Reasonable mass for a small block (~5cm cube) -->
+      <inertial>
+        <mass>0.20</mass> <!-- 200 g -->
+        <!-- Inertia of a 0.05 m cube, m=0.2 kg: I = (1/12)*m*(a^2+a^2) = 8.333e-05 -->
+        <inertia>
+          <ixx>8.333e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>8.333e-05</iyy>
+          <iyz>0</iyz>
+          <izz>8.333e-05</izz>
+        </inertia>
+      </inertial>
+
+      <!-- Keep world-frame pose simple; rotate the mesh inside if needed -->
+      <pose>0 0 0 0 0 0</pose>
+      <gravity>1</gravity>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+      <enable_wind>0</enable_wind>
+
+      <!-- Visual: your STL -->
+      <visual name='visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>/home/ros/catkin_ws/src/aubo_i10_ros_noetic/aubo_gazebo/world/sygj.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <lighting>1</lighting>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Grey</name>
+          </script>
+          <ambient>0.3 0.3 0.3 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+          <specular>0.01 0.01 0.01 1</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+        <cast_shadows>1</cast_shadows>
+      </visual>
+
+      <!-- Collision: simple primitive (robust) -->
+      <collision name='collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <!-- Replace with your real size -->
+          <box><size>0.05 0.05 0.05</size></box>
+          <!-- If you insist on mesh, FIX the URI and expect more fragility:
+          <mesh>
+            <uri>/home/ros/catkin_ws/src/aubo_i10_ros_noetic/aubo_gazebo/world/sygj.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+          -->
+        </geometry>
+
+        <surface>
+          <friction>
+            <ode>
+              <mu>1.2</mu>
+              <mu2>1.2</mu2>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
+            </ode>
+          </friction>
+
+          <bounce>
+            <restitution_coefficient>0.0</restitution_coefficient>
+            <threshold>1e6</threshold>
+          </bounce>
+
+          <contact>
+            <ode>
+              <!-- Reasonable contact stiffness/damping to avoid chatter -->
+              <kp>3000</kp>
+              <kd>15</kd>
+              <max_vel>0.2</max_vel>
+              <min_depth>0.001</min_depth>
+              <soft_cfm>0.0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+  </model>
+</sdf>
